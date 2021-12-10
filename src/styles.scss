@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+.app {
+  overflow: auto;
+  height: 1px;
+  min-height: 100vh;
+}
+.layout {
+  overflow: auto;
+  display: grid;
+  grid-template:
+    "action" min-content
+    "history" min-content
+    "result" auto
+    "result" fit-content(100%)
+    / 1fr;
+  align-content: stretch;
+}
+
+.action {
+  grid-area: action;
+}
+
+.list {
+  overflow: auto;
+  grid-area: list;
+}
+
+.result {
+  grid-area: result;
+  overflow: auto;
+  min-height: 240px;
+}
+
+.history {
+  grid-area: history;
+  overflow: auto;
+  min-height: 240px;
+}
+
+.appear-later {
+  animation: appear 0.5s 0.5s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template:
+      "action history" fit-content(0)
+      "result history" auto
+      "result history" fit-content(100%)
+      /10fr minmax(360px, 2fr);
+  }
+}
